@@ -3,7 +3,7 @@ const GITHUB_URL = process.env.REACT_APP_GITHUB_URL;
 const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
 const githubFetch = axios.create({
   baseURL: GITHUB_URL,
-  headers: { Authorization: `token ${GITHUB_TOKEN}` },
+  headers: { Authorization: `toekn ${GITHUB_TOKEN}` },
 });
 
 // Get user search Results
@@ -12,8 +12,7 @@ export const searchUsers = async (text) => {
     q: text,
   });
   const response = await githubFetch.get(`/search/users?${params}`);
-  let { items } = await response.data;
-  return items;
+  return response.data.items;
 };
 
 // Get single user
